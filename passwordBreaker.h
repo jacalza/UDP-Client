@@ -20,10 +20,30 @@
 #include <stdlib.h>     /* for atoi() and exit() */
 #include <unistd.h>     /* for close() */
 
-// SIGINT execution method
-void clientCNTCCode();
+#include "passUtilities.c"
 
-// Print errorMessage and exit
-void dieWithError(char *errorMessage);
+
+// Resolve domain name to IP address and store in addr
+void resolveName(char* name, struct sockaddr_in* addr);
+
+// Randomly generate password\
+void genPass(char* pass) {
+	char *c;
+	for(c = &pass; *c != NULL; c++) {
+		printf("%s", c);
+	}
+}
+
+/* Global utilities	*/
+void clientCNTCCode() {
+	printf("\nUDPEchoClient:  CNT-C Interrupt,  exiting....\n");
+	exit(1);
+}
+
+void dieWithError(char *errorMessage) {
+	printf("%s\n", errorMessage);
+    //perror(errorMessage);
+    exit(1);
+}
 
 #endif
