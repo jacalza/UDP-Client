@@ -22,28 +22,22 @@
 
 #include "passUtilities.c"
 
+char availChars[62] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+					'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B',
+					'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+					'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', 
+					'4', '5', '6', '7', '8', '9'};
 
 // Resolve domain name to IP address and store in addr
 void resolveName(char* name, struct sockaddr_in* addr);
 
 // Randomly generate password\
-void genPass(char* pass) {
-	char *c;
-	for(c = &pass; *c != NULL; c++) {
-		printf("%s", c);
-	}
-}
+void genPass(char* pass, int passLen);
+
 
 /* Global utilities	*/
-void clientCNTCCode() {
-	printf("\nUDPEchoClient:  CNT-C Interrupt,  exiting....\n");
-	exit(1);
-}
+void clientCNTCCode();
 
-void dieWithError(char *errorMessage) {
-	printf("%s\n", errorMessage);
-    //perror(errorMessage);
-    exit(1);
-}
+void dieWithError(char *errorMessage);
 
 #endif

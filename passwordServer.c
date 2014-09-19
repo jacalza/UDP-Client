@@ -24,8 +24,8 @@ int main(int argc, char *argv[])
     // Assign optional initialPassword or generate random pass
     if (argc == 4)
     	passString = argv[3];
-    // else 
-    // 	genPass(passString);
+    else 
+     	genPass(passString, passStringLen);
 
     /* Create socket for sending/receiving datagrams */
     if ((sock = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0)
@@ -60,8 +60,4 @@ int main(int argc, char *argv[])
             dieWithError("sendto() sent a different number of bytes than expected");
     }
     /* NOT REACHED */
-}
-
-void genPass(char *pass) {
-
 }

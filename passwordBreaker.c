@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
     for(;;) 
     {
         // Generate password
-        genPass(passString);
+        genPass(passString, passStringLen);
 
         /* Send the string to the server */
         printf("passwordBreaker (client): Send the string: %s to the server: %s \n", passString, servIP);
@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
           dieWithError("sendto() sent a different number of bytes than expected");
         
         /* Recv a response */
-        printf("UDPEchoClient: And now wait for a response... \n");
+        printf("passwordBreaker (client): And now wait for a response... \n");
         fromSize = sizeof(fromAddr);
         if ((respStringLen = recvfrom(sock, buffer, PASSMAX, 0,
              (struct sockaddr *) &fromAddr, &fromSize)) != passStringLen)
@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
         }
         /* null-terminate the received data */
         buffer[respStringLen] = '\0';
-        printf("UDPEchoClient:  Received the following (%d bytes) data: %s\n",respStringLen,buffer);
+        printf("passwordBreaker Client:  Received the following (%d bytes) data: %s\n",respStringLen,buffer);
     }
 
     close(sock);
