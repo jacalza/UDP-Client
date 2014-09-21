@@ -4,7 +4,7 @@ int main(int argc, char *argv[]) {
     int sock;                        /* Socket descriptor */
     struct sockaddr_in servAddr; 	 /* Password server address */
     struct sockaddr_in fromAddr;     /* Source address of passwordBreaker */
-    struct hostent *thehost;         /* Hostent from gethostbyname() */
+    //struct hostent *thehost;         /* Hostent from gethostbyname() */
     char *servPort;     	         /* Password server port */
     unsigned int fromSize;           /* In-out of address size for recvfrom() */
     char *servName;                  /* IP address/domain name of server */
@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 }
 
 void resolveName(char* name, struct sockaddr_in *addr) {
-    struct addrinfo hints, *servInfo, *p;
+    struct addrinfo hints, *servInfo;
     struct sockaddr_in *h;
     int rv;
 
@@ -103,4 +103,26 @@ void resolveName(char* name, struct sockaddr_in *addr) {
 
     // Free temporary servInfo
     freeaddrinfo(servInfo);
+}
+
+void genPass(char *pass, int passLen) {
+    char *c = pass;
+    int i;
+
+    // If empty string, intialize with default a's
+    if (strlen(pass) == 0) {
+        for (i=0; i<passLen; i++, c++) *c = 'a';
+    }
+    else {
+        for (i=0; i<passLen; i++, c++) {
+
+        }
+        
+    }
+
+    printf("%s\n", pass);
+}
+
+char* getNextPass(char *pass, int passLen) {
+    
 }
